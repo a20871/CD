@@ -1,0 +1,11 @@
+{
+  "utilizadores":[{
+    "criar_conta":[{
+      "id": 3,
+      "username:": "admin",
+      "password": "1234"
+
+    }]
+
+  }]
+}

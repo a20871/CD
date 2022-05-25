@@ -66,7 +66,7 @@ function FazerLogin()
 function Registar()
 {
     const http = new XMLHttpRequest();
-    const url = "http://127.0.0.1:5000/utilizadores/criar_conta";
+    const url = "http://localhost:3000/utilizadores/criar_conta/";
     const method = "POST"
     username = document.getElementById("username").value;
     password = document.getElementById("password").value;
@@ -74,12 +74,14 @@ function Registar()
 
     http.open(method, url);
     http.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-
+console.log(json);
     http.send(JSON.stringify(json));
+
 
     http.onreadystatechange = (e) => {
         if (http.readyState === 4)
             document.write(http.response)
+        console.log(http.response)
     }
 }
 
