@@ -1,0 +1,6 @@
+.container{
+    font-family: "Blackadder ITC";
+    display:flex;
+    justify-content:center;
+    background-color: darkseagreen;
+}
