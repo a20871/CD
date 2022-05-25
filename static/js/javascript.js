@@ -1,5 +1,8 @@
-var username
-var password
+const username = document.getElementById("username");
+const password = document.getElementById("password");
+const socket = io();
+const http = new XMLHttpRequest();
+const json = {};
 
 function PedidoHTTP()
 {
@@ -9,7 +12,7 @@ function PedidoHTTP()
     const json = document.getElementById("json").value
 
     http.open(method, url);
-    http.setRequestHeader("Authorization", "Basic " + btoa(username + ":" + password));
+    http.setRequestHeader("Authorization", "Basic " + btoa(username.value + ":" + password.value));
     http.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
     http.send(JSON.stringify(json));
         
@@ -33,21 +36,13 @@ function PedidoHTTP()
     }
 }
 
-
-function FazerLogin()
+  const url = "http://127.0.0.1:5000/login";
+function fazerLogin(method, url)
 {
-    var socket = io();
-    const http = new XMLHttpRequest();
-    const url = "http://127.0.0.1:5000/login";
-    const method = "GET"
-    const json = {};
-    username = document.getElementById("username").value;
-    password = document.getElementById("password").value;
-    
     http.open(method, url);
     http.setRequestHeader("Authorization", "Basic " + btoa(username + ":" + password));
-    http.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-    http.send(json);
+    // http.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+    //http.send(json);
 
     http.onreadystatechange = (e) => {
         if (http.readyState === 4)
@@ -63,13 +58,11 @@ function FazerLogin()
     }
 }
 
-function Registar()
+function registar()
 {
     const http = new XMLHttpRequest();
     const url = "http://localhost:3000/utilizadores/criar_conta/";
     const method = "POST"
-    username = document.getElementById("username").value;
-    password = document.getElementById("password").value;
     const json = {"username":username, "password":password};
 
     http.open(method, url);

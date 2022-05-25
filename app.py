@@ -1,21 +1,21 @@
-from flask import Flask
 import json, os, shutil
-from flask.helpers import send_from_directory, send_file
+from flask.helpers import send_from_directory, send_file, url_for
 from flask import Flask, jsonify, abort, request, make_response, render_template
 from flask_httpauth import HTTPBasicAuth
 from flask_cors import CORS
-from werkzeug.utils import secure_filename
+from werkzeug.utils import secure_filename, redirect
 from utils import escrever_ficheiro, ler_ficheiro, verificar_ficheiro
+from flask_login import current_user, login_user, login_required, logout_user, LoginManager
+from db import get_user
 
 app = Flask(__name__)
-
 UPLOAD_PATH = "FicheirosCarregados/"
-
-app = Flask(__name__, static_url_path="", template_folder='templates')
 CORS(app)
 app.config['SECRET_KEY'] = 'secret'
 auth = HTTPBasicAuth()
-
+# login_manager = LoginManager()
+# login_manager.login_view = 'login'
+# login_manager.init_app(app)
 
 @auth.error_handler
 def unauthorized():
@@ -33,6 +33,39 @@ def bad_request(error):
 def not_found(error):
     return make_response(jsonify({'error': 'Not found'}), 404)
 
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if current_user.is_authenticated:
+        return redirect(url_for('home'))
+
+    message = ''
+    if request.method == 'POST':
+        username = request.form.get('username')
+        password_input = request.form.get('password')
+        user = get_user(username)
+
+        if user and user.check_password(password_input):
+            login_user(user)
+            return redirect(url_for('home'))
+        else:
+            message = 'Failed to login!'
+    return render_template('login.html', message=message)
+
+
+@app.route("/logout/")
+@login_required
+def logout():
+    logout_user()
+    return redirect(url_for('home'))
+
+
+
+
+
+
+
+
+
 
 # Ler os dados dos ficheiros
 canais = ler_ficheiro('canais')
@@ -41,11 +74,11 @@ utilizadores = ler_ficheiro('utilizadores')
 
 
 # Página Principal
-@app.route('/', methods=['GET'])
-def root():
-    if auth.current_user() != None:
-        return send_from_directory("templates", "menu.html")
-    return render_template("login.html")
+# @app.route('/', methods=['GET'])
+# def root():
+#     if auth.current_user() != None:
+#         return send_from_directory("templates", "menu.html")
+#     return render_template("login.html")
 
 
 # Obtem ficheiros
