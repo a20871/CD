@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="templates/menucss.css" rel="stylesheet" type="text/css"/>
+        <link href="./css/bootstrap.min.css" rel="stylesheet">
+        <meta http-equiv=“Pragma” content=”no-cache”>
+        <meta http-equiv=“Expires” content=”-1″>
+        <meta http-equiv=“CACHE-CONTROL” content=”NO-CACHE”>
+    </head>
+
+    <body>
+        <section class="enq">
+            <div class="container" style="margin-left: 450px;">
+
+                <h1 style="padding-left: 330px; color: #F2AA4C">Comunicação de Dados</h1>
+                <script src="templates/javascript.js" type="text/javascript"></script>
+
+                <input type="text" id="domain2" name="fname" placeholder="/*" style="margin-top: 40px; margin-left: 150px;"><br>
+
+                <textarea id="json" name="Text1" cols="40" rows="5" placeholder='{"*":"*"}' style="height: 86px; margin-top: 40px; margin-left: 150px;"></textarea>
+
+                <div style="margin-top: 40px; margin-left: 150px;">
+                    <select id="method">
+                        <option value="" disabled selected>Método</option>
+                        <option value="GET">GET</option>
+                        <option value="POST">POST</option>
+                        <option value="DELETE">DELETE</option>
+                        <option value="PUT">PUT</option>
+                    </select>
+
+                    <select id="domain">
+                        <option value="" disabled>Mensagens Persistentes</option>
+                        <option value="/mensagens/enviar_mensagens">Enviar Mensagem</option>
+                        <option value="/mensagens/ver_mensagens">Lista de Mensagens</option>
+                        <option value="/mensagens/remover_mensagem">Remover Mensagem</option>
+                        <option value="" disabled>Mensagens Instantâneas</option>
+                        <option value="/canais/inserir_utilizador">Inserir Utilizador no Canal</option>
+                        <option value="/canais/remover_utilizador">Remover Utilizador do Canal</option>
+                        <option value="" disabled>Transferência de Ficheiros</option>
+                        <option value="/ficheiros/carregar">Carregar Ficheiro</option>
+                        <option value="/ficheiros/download">Download Ficheiro</option>
+                        <option value="/ficheiros/lista">Lista Ficheiros</option>
+                        <option value="/ficheiros/remover">Remover Ficheiro</option>-
+                        <option value="" disabled>Gestão de Utilizadores</option>
+                        <option value="/utilizadores/criar_conta">Criar Conta</option>
+                        <option value="/utilizadores/alterar_password">Alterar Password</option>
+                        <option value="/utilizadores/remover">Remover Utilizador</option>
+                        <option value="/canais/criar_canal">Criar Canal</option>
+                    </select>
+                </div>
+
+                <div style="margin-top: 40px; margin-left: 150px;">
+                    <button onclick="PedidoHTTP()">Pedido HTTP</button>
+                    <input class="files" type="file" name="file" id="ficheiro" style="width: 400px;" />
+                    <input class="files" type="submit" onclick="PedidoHTTPFicheiros()" value="Enviar Ficheiro" />
+                </div>
+
+                <br>
+                <h3 style="margin-left: 450px; color: #F2AA4C;">Resposta</h3>
+                <br>
+                <div id=mensagem></div>
+            </div>
+        </section>
+
+        <script src="./js/bootstrap.bundle.min.js "></script>
+    </body>
+</html>

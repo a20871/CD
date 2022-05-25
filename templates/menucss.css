@@ -1,0 +1,30 @@
+body {
+    color: white;
+    background-color: #F2AA4C;
+}
+
+#color_black {
+    margin-left: 400px;
+    margin-right: 400px;
+    background-color: #101820;
+}
+
+.container {
+    max-width: 960px;
+    background-color: #101820;
+    padding-bottom: 30px;
+    padding-top: 30px;
+    height: 660px;
+}
+
+.enq {
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+textarea,
+select,
+button,
+input {
+    border-color: #F2AA4C
+}
