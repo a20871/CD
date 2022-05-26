@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+body{
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    margin-top:200px;
+}
+.container{
+    font-family: 'Lobster', cursive;
+    display:grid;
+    grid-template-rows: max-content max-content max-content max-content;
+    text-align-all: center;
+}
+input{
+    border:2px dashed darkslategray;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+.title,.login{
+    text-align: center;
+    font-size:50px;
+}
+button{
+    padding: 8px;
+    background-color: darkslategrey;
+    color:aliceblue;
+    border:none;
+}
