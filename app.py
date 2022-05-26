@@ -1,4 +1,4 @@
-from flask import Flask
+
 import json, os, shutil
 from flask.helpers import send_from_directory, send_file
 from flask import Flask, jsonify, abort, request, make_response, render_template
@@ -7,7 +7,6 @@ from flask_cors import CORS
 from werkzeug.utils import secure_filename
 from utils import escrever_ficheiro, ler_ficheiro, verificar_ficheiro
 
-app = Flask(__name__)
 
 UPLOAD_PATH = "FicheirosCarregados/"
 

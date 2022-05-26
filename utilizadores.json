@@ -1,11 +1,24 @@
 {
-  "utilizadores":[{
-    "criar_conta":[{
-      "id": 3,
-      "username:": "admin",
+  "utilizadores": [
+    {
+      "id": 1,
+      "username": "admin",
       "password": "1234"
-
-    }]
-
-  }]
+    },
+    {
+      "username": "as",
+      "password": "1234",
+      "id": 3
+    },
+    {
+      "username": "sergio",
+      "password": "1234",
+      "id": 4
+    },
+    {
+      "username": "as",
+      "password": "1234",
+      "id": 5
+    }
+  ]
 }
